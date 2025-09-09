@@ -1,183 +1,151 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, Waves, Users, Brain, Globe, ArrowRight, CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Shield, Waves, Users, Brain } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-dashboard-bg">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b shadow-card">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-ocean-gradient rounded-lg flex items-center justify-center shadow-ocean">
-                <Shield className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold text-foreground">ResQ</span>
-            </div>
-            <Link to="/dashboard">
-              <Button className="bg-ocean-gradient hover:opacity-90 shadow-ocean">
-                Launch Dashboard
-              </Button>
-            </Link>
+    <div className="min-h-screen flex flex-col">
+      {/* Navbar */}
+      <header className="w-full bg-white shadow-sm fixed top-0 z-50">
+        <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+          <div className="flex items-center gap-2">
+             <img
+          src="ResQ.png"
+          alt="ResQ Logo"
+          className="h-14 w-auto object-contain"
+          />
           </div>
+          <nav className="hidden md:flex gap-6 text-gray-600">
+            <a href="#features" className="hover:text-blue-600">Features</a>
+            <a href="#about" className="hover:text-blue-600">About</a>
+            <a href="#contact" className="hover:text-blue-600">Contact</a>
+          </nav>
+          <Link
+            to="/dashboard"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow-md transition"
+          >
+            Launch Dashboard
+          </Link>
         </div>
-      </nav>
+      </header>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-4xl mx-auto animate-slide-up">
-            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Unified Coastal Emergency
-              <span className="bg-ocean-gradient bg-clip-text text-transparent"> Response</span>
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-              ResQ combines citizen reporting, AI-powered social media analysis, and real-time data visualization 
-              to help emergency response agencies make faster, more informed decisions during ocean disasters.
+      <main className="flex-grow flex flex-col justify-center items-center text-center px-6 pt-28 pb-16 bg-gradient-to-b from-white to-blue-50">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight"
+        >
+          Unified Coastal Emergency <span className="text-blue-600">Response</span>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mt-4 text-lg text-gray-600 max-w-2xl"
+        >
+          ResQ combines citizen reporting, AI-powered social media analysis, and real-time data visualization
+          to help emergency response agencies make faster, informed decisions during ocean disasters.
+        </motion.p>
+
+        {/* CTA Buttons */}
+        <div className="mt-8 flex flex-col sm:flex-row gap-4">
+          <Link
+            to="/dashboard"
+            className="px-6 py-3 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 transition"
+          >
+            Enter Command Center →
+          </Link>
+          <button className="px-6 py-3 bg-white border rounded-xl shadow hover:shadow-md transition text-gray-700">
+            Join as Citizen Reporter
+          </button>
+        </div>
+      </main>
+
+      {/* Features Section */}
+      <section id="features" className="max-w-7xl mx-auto px-6 py-16 text-center">
+        <h2 className="text-3xl font-bold text-gray-800">
+          Complete Emergency Response Ecosystem
+        </h2>
+        <p className="mt-2 text-gray-600 max-w-2xl mx-auto">
+          Leveraging cutting-edge technology to create a comprehensive coastal hazard monitoring system
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-8 mt-12">
+          {/* Real-time Hazard Mapping */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition"
+          >
+            <Waves className="w-10 h-10 text-blue-600 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-gray-800">Real-time Hazard Mapping</h3>
+            <p className="text-gray-600 mt-2">
+              Interactive maps showing live coastal threats with satellite and citizen data.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/dashboard">
-                <Button size="lg" className="bg-ocean-gradient hover:opacity-90 shadow-ocean">
-                  <Shield className="w-5 h-5 mr-2" />
-                  Enter Command Center
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-              </Link>
-              <Button size="lg" variant="outline" className="shadow-card">
-                <Users className="w-5 h-5 mr-2" />
-                Join as Citizen Reporter
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+          </motion.div>
 
-      {/* Features Grid */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Complete Emergency Response Ecosystem
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Leveraging cutting-edge technology to create a comprehensive coastal hazard monitoring system
+          {/* Citizen Reporting */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition"
+          >
+            <Users className="w-10 h-10 text-green-600 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-gray-800">Citizen Reporting Network</h3>
+            <p className="text-gray-600 mt-2">
+              Crowdsourced hazard reports with media uploads for faster situational awareness.
             </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Waves,
-                title: "Real-time Hazard Mapping",
-                description: "Interactive maps showing live coastal threats with dynamic hotspot generation based on report volumes and AI verification.",
-                color: "text-primary"
-              },
-              {
-                icon: Users,
-                title: "Citizen Reporting Network",
-                description: "Crowdsourced hazard reports with media upload, location tagging, and offline data collection capabilities.",
-                color: "text-safe"
-              },
-              {
-                icon: Brain,
-                title: "AI-Powered Analysis",
-                description: "Natural language processing engine detecting hazard keywords, sentiment analysis, and threat assessment from social media.",
-                color: "text-emergency"
-              },
-              {
-                icon: Globe,
-                title: "Multilingual Support",
-                description: "Accessible to diverse coastal communities with full language support and cultural considerations for emergency communication.",
-                color: "text-primary"
-              },
-              {
-                icon: CheckCircle,
-                title: "Verification System",
-                description: "Advanced verification protocols combining human oversight and AI validation to ensure report accuracy and reduce false alarms.",
-                color: "text-safe"
-              },
-              {
-                icon: Shield,
-                title: "Early Warning Integration",
-                description: "Seamless integration with existing emergency warning systems and protocols for coordinated disaster response.",
-                color: "text-emergency"
-              }
-            ].map((feature, index) => (
-              <Card 
-                key={index} 
-                className="shadow-card hover:shadow-lg transition-all duration-300 animate-slide-up border-border"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardHeader>
-                  <feature.icon className={`w-10 h-10 ${feature.color} mb-4`} />
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+          </motion.div>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-card/50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            {[
-              { number: "50,000+", label: "Active Citizen Reporters" },
-              { number: "99.7%", label: "Accuracy Rate" },
-              { number: "4.2 min", label: "Average Response Time" },
-              { number: "15", label: "Languages Supported" }
-            ].map((stat, index) => (
-              <div key={index} className="animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="text-3xl font-bold text-primary mb-2">{stat.number}</div>
-                <div className="text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-3xl mx-auto animate-slide-up">
-            <h2 className="text-3xl font-bold text-foreground mb-6">
-              Ready to Transform Emergency Response?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Join emergency agencies worldwide using ResQ to protect coastal communities with 
-              real-time intelligence and coordinated response capabilities.
+          {/* AI Analysis */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition"
+          >
+            <Brain className="w-10 h-10 text-orange-600 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-gray-800">AI-Powered Analysis</h3>
+            <p className="text-gray-600 mt-2">
+              Natural language processing to detect hazard signals from social media and field reports.
             </p>
-            <Link to="/dashboard">
-              <Button size="lg" className="bg-ocean-gradient hover:opacity-90 shadow-ocean">
-                <Shield className="w-5 h-5 mr-2" />
-                Access ResQ Dashboard
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-          </div>
+          </motion.div>
+
+          {/* Multilingual Support */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition"
+          >
+            <span className="text-purple-600 text-3xl">🌍</span>
+            <h3 className="text-xl font-semibold text-gray-800 mt-3">Multilingual Support</h3>
+            <p className="text-gray-600 mt-2">
+              Seamless translation of alerts and reports to support diverse coastal communities.
+            </p>
+          </motion.div>
+
+          {/* Verification System */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition"
+          >
+            <span className="text-red-600 text-3xl">✅</span>
+            <h3 className="text-xl font-semibold text-gray-800 mt-3">Verification System</h3>
+            <p className="text-gray-600 mt-2">
+              AI and human-in-the-loop checks ensure authenticity and accuracy of reports.
+            </p>
+          </motion.div>
+
+          {/* Early Warning Integration */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition"
+          >
+            <span className="text-yellow-500 text-3xl">⚡</span>
+            <h3 className="text-xl font-semibold text-gray-800 mt-3">Early Warning Integration</h3>
+            <p className="text-gray-600 mt-2">
+              Real-time integration with government early warning systems for rapid alerts.
+            </p>
+          </motion.div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-12 border-t bg-card/30">
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-8 h-8 bg-ocean-gradient rounded-lg flex items-center justify-center">
-              <Shield className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-lg font-bold text-foreground">ResQ</span>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            Unified Coastal Emergency Response System - Protecting communities through intelligent monitoring
-          </p>
-        </div>
-      </footer>
     </div>
   );
 };

@@ -14,10 +14,11 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-ocean-gradient rounded-lg flex items-center justify-center shadow-ocean">
-              <Shield className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-xl font-bold text-foreground">ResQ</span>
+            <img
+            src="ResQ.png"
+            alt="ResQ Logo"
+            className="h-14 w-auto object-contain"
+            />
             <span className="text-sm text-muted-foreground hidden sm:block">Emergency Response</span>
           </div>
 
