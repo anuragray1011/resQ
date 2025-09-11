@@ -193,21 +193,21 @@ export default function Dashboard() {
                         {
                           id: "1",
                           title: "Tsunami warning observed",
-                          location: "Santa Monica Pier",
+                          location: "Kerala",
                           time: "2 min ago",
                           severity: "critical"
                         },
                         {
                           id: "2",
-                          title: "Street flooding downtown",
-                          location: "Main Street",
+                          title: "Street flooding reported",
+                          location: "Punjab",
                           time: "15 min ago",
                           severity: "medium"
                         },
                         {
                           id: "3",
                           title: "Strong winds and debris",
-                          location: "Venice Beach",
+                          location: "Odisha",
                           time: "1 hour ago",
                           severity: "high"
                         }
