@@ -25,31 +25,31 @@ const mockPosts: SocialPost[] = [
   {
     id: "1",
     platform: "twitter",
-    author: "@coastalwatch_la",
+    author: "@coastalwatch",
     content: "Massive waves hitting the pier right now! Water is receding fast - this doesn't look normal. #tsunami #warning #LosAngeles",
     timestamp: "3 min ago",
     engagement: { likes: 156, comments: 23, shares: 89 },
     sentiment: "negative",
     hazardKeywords: ["tsunami", "waves", "warning"],
-    location: "Los Angeles Pier",
+    location: "Odisha",
     verified: true
   },
   {
-    id: "2", 
+    id: "2",
     platform: "instagram",
-    author: "beach_lover_ca",
+    author: "beach_lover",
     content: "The water just went crazy here! Flooding everywhere on the boardwalk. Stay safe everyone! 🌊⚠️",
     timestamp: "7 min ago",
     engagement: { likes: 89, comments: 15, shares: 34 },
     sentiment: "negative",
     hazardKeywords: ["flooding", "water", "stay safe"],
-    location: "Santa Monica",
+    location: "Punjab",
     verified: false
   },
   {
     id: "3",
     platform: "facebook",
-    author: "Maria Rodriguez",
+    author: "News Daily",
     content: "Emergency services are responding quickly to the coastal flooding. Proud of our first responders! 👏",
     timestamp: "12 min ago",
     engagement: { likes: 45, comments: 8, shares: 12 },
@@ -61,7 +61,7 @@ const mockPosts: SocialPost[] = [
     id: "4",
     platform: "twitter",
     author: "@weather_alerts",
-    content: "URGENT: Tsunami warning issued for Southern California coast. Evacuate coastal areas immediately. Official alert.",
+    content: "URGENT: Tsunami warning issued for Goa. Evacuate coastal areas immediately. Official alert.",
     timestamp: "15 min ago",
     engagement: { likes: 1203, comments: 156, shares: 678 },
     sentiment: "negative",
@@ -90,15 +90,15 @@ const getSentimentColor = (sentiment: string) => {
 export function SocialMediaFeed() {
   const [filter, setFilter] = useState<string>("all");
 
-  const filteredPosts = mockPosts.filter(post => 
+  const filteredPosts = mockPosts.filter(post =>
     filter === "all" || post.sentiment === filter || post.hazardKeywords.includes(filter)
   );
 
   return (
-    <Card className="h-[600px] shadow-card">
+    <Card className="max-h-[600px] shadow-card">
       <CardHeader>
         <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2">
+          <CardTitle className="flex items-center gap-1.5">
             <TrendingUp className="w-5 h-5 text-primary" />
             Social Media Monitor
           </CardTitle>
@@ -117,8 +117,8 @@ export function SocialMediaFeed() {
           </div>
         </div>
       </CardHeader>
-      <CardContent className="h-full overflow-hidden">
-        <div className="space-y-4 h-full overflow-y-auto pr-2">
+      <CardContent className="overflow-y-auto pr-2 space-y-3 max-h-[520px]">
+        <div className="space-y-3 h-full overflow-y-auto pr-2">
           {filteredPosts.map((post, index) => (
             <div
               key={post.id}
@@ -126,7 +126,7 @@ export function SocialMediaFeed() {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Header */}
-              <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
                   <div className={`w-4 h-4 rounded-full ${getPlatformColor(post.platform)}`} />
                   <span className="font-semibold text-sm">{post.author}</span>
@@ -148,11 +148,10 @@ export function SocialMediaFeed() {
                   <Badge
                     key={keyword}
                     variant="secondary"
-                    className={`text-xs ${
-                      ["tsunami", "warning", "urgent", "evacuate"].includes(keyword)
+                    className={`text-xs ${["tsunami", "warning", "urgent", "evacuate"].includes(keyword)
                         ? "bg-emergency/20 text-emergency"
                         : "bg-primary/20 text-primary"
-                    }`}
+                      }`}
                   >
                     {keyword}
                   </Badge>
@@ -184,11 +183,11 @@ export function SocialMediaFeed() {
                   <span className={`text-xs font-medium ${getSentimentColor(post.sentiment)}`}>
                     {post.sentiment}
                   </span>
-                  {post.hazardKeywords.some(keyword => 
+                  {post.hazardKeywords.some(keyword =>
                     ["tsunami", "warning", "urgent", "evacuate"].includes(keyword)
                   ) && (
-                    <AlertTriangle className="w-4 h-4 text-emergency animate-emergency-pulse" />
-                  )}
+                      <AlertTriangle className="w-4 h-4 text-emergency animate-emergency-pulse" />
+                    )}
                 </div>
               </div>
             </div>
