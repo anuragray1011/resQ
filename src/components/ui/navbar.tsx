@@ -1,12 +1,23 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import { Shield, Menu, X, Globe, Bell } from "lucide-react";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [language, setLanguage] = useState("EN");
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [agencyId, setAgencyId] = useState("");
+  const [securityCode, setSecurityCode] = useState("");
 
   const languages = ["EN", "ES", "FR", "PT"];
+
+  const handleLogin = () => {
+    // Simulate login success (replace with real logic if needed)
+    alert("Login Successful!\nWelcome to ResQ Command Center 🚑");
+    setIsLoginOpen(false);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b shadow-card">
@@ -15,11 +26,13 @@ export function Navbar() {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <img
-            src="ResQ.png"
-            alt="ResQ Logo"
-            className="h-14 w-auto object-contain"
+              src="ResQ.png"
+              alt="ResQ Logo"
+              className="h-14 w-auto object-contain"
             />
-            <span className="text-sm text-muted-foreground hidden sm:block">Emergency Response</span>
+            <span className="text-sm text-muted-foreground hidden sm:block">
+              Emergency Response
+            </span>
           </div>
 
           {/* Desktop Navigation */}
@@ -55,8 +68,13 @@ export function Navbar() {
               <span className="absolute -top-1 -right-1 w-3 h-3 bg-emergency rounded-full animate-emergency-pulse" />
             </Button>
 
-            {/* Profile */}
-            <Button variant="default" size="sm" className="bg-ocean-gradient hover:opacity-90">
+            {/* Login Button (opens modal) */}
+            <Button
+              variant="default"
+              size="sm"
+              className="bg-ocean-gradient hover:opacity-90"
+              onClick={() => setIsLoginOpen(true)}
+            >
               Login
             </Button>
 
@@ -84,6 +102,38 @@ export function Navbar() {
           </div>
         )}
       </div>
+
+      {/* Login Modal */}
+      <Dialog open={isLoginOpen} onOpenChange={setIsLoginOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Emergency Personnel Login</DialogTitle>
+            <DialogDescription>
+              Secure access to ResQ Command Center
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4">
+            <Input
+              placeholder="Enter your Agency ID"
+              value={agencyId}
+              onChange={(e) => setAgencyId(e.target.value)}
+            />
+            <Input
+              type="password"
+              placeholder="Security Code"
+              value={securityCode}
+              onChange={(e) => setSecurityCode(e.target.value)}
+            />
+            <Button
+              className="w-full bg-ocean-gradient hover:opacity-90"
+              onClick={handleLogin}
+            >
+              <Shield className="w-4 h-4 mr-2" />
+              Secure Login
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </nav>
   );
 }
