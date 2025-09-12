@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import Footer from "./components/footer";
+import Chatbot from "./components/Chatbot";
 
 const queryClient = new QueryClient();
 
@@ -26,8 +27,9 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
+        
           {/* Footer always at the bottom */}
-          <Footer />
+          <Footer />  
         </div>
       </BrowserRouter>
     </TooltipProvider>

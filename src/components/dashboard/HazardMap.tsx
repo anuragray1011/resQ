@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MapPin, AlertTriangle, Camera, MessageSquare, Waves, Wind, Cloud } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import Chatbot from "../Chatbot";
 
 interface HazardReport {
   id: string;
@@ -175,6 +176,7 @@ export function HazardMap() {
           </div>
         );
       })}
+    
 
       {/* Selected Report Panel */}
       {selectedReport && (
@@ -245,6 +247,11 @@ export function HazardMap() {
             </div>
           </div>
         </Card>
+      </div>
+   
+    {/* Chatbot Section */}
+      <div className="relative ">
+        <Chatbot/>
       </div>
     </div>
   );
