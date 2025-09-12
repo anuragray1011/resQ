@@ -101,7 +101,7 @@ export function HazardMap() {
         </div>
 
         {/* Coastline */}
-        <svg className="absolute inset-0 w-full h-full">
+        {/* <svg className="absolute inset-0 w-full h-full">
           <path
             d="M 0 300 Q 200 280 400 300 T 800 320"
             stroke="#2563eb"
@@ -109,7 +109,7 @@ export function HazardMap() {
             fill="none"
             className="drop-shadow-sm"
           />
-        </svg>
+        </svg> */}
       </div>
 
       {/* Filter Controls */}
